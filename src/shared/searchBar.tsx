@@ -1,19 +1,30 @@
 import { useState } from "react";
 
-export default function SearchBar() {
+interface SearchBarProps {
+  onSearch: (query: string) => void;
+}
+
+export default function SearchBar({ onSearch }: SearchBarProps) {
   const [searchQuery, setSearchQuery] = useState("");
 
   const handleSearch = () => {
-    console.log("Buscando:", searchQuery);
+    onSearch(searchQuery);
+  };
+
+  const handleKeyDown = (e: React.KeyboardEvent<HTMLInputElement>) => {
+    if (e.key === "Enter") {
+      handleSearch();
+    }
   };
 
   return (
-   <div className="flex items-center border border-gray-300 rounded-lg bg-white shadow-sm overflow-hidden w-full">
+    <div className="flex items-center border md:w-lg m-auto border-gray-300 rounded-lg bg-white shadow-sm overflow-hidden w-full">
       <input
         type="text"
         placeholder="Buscar productos..."
         value={searchQuery}
         onChange={(e) => setSearchQuery(e.target.value)}
+        onKeyDown={handleKeyDown}
         className="px-4 py-2 w-full text-gray-700 placeholder-gray-400 outline-none bg-transparent"
       />
       <button
@@ -23,6 +34,5 @@ export default function SearchBar() {
         Buscar
       </button>
     </div>
-  );
+  );
 }
-

@@ -1,6 +1,3 @@
-
-
-import SearchBar from './searchBar';
 import NavigationLinks from './navigationLinks';
 
 export default function Navbar() {
@@ -10,11 +7,6 @@ export default function Navbar() {
            <div className="flex items-center justify-between max-w-screen-xl mx-auto px-8 py-4 w-full">
                 {/* Logo */}
                 <a href="/" className="text-2xl font-bold text-red-500 tracking-wide">Mitienda</a>
-
-                {/* Search Bar */}
-                <div className="flex-1 mx-8 max-w-lg">
-                    <SearchBar />
-                </div>
 
                 {/* Navigation Links */}
                 <NavigationLinks />
